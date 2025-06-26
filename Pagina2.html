@@ -1,59 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Inventario de Productos</title>
-    <style>
-        body {
-            font-family: Verdana, sans-serif;
-            background-color: #fff8f0;
-        }
-        h1 {
-            color: #8e44ad;
-            text-align: center;
-        }
-        table {
-            border-collapse: collapse;
-            width: 70%;
-            margin: 20px auto;
-            background-color: #fefefe;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: center;
-        }
-        th {
-            background-color: #9b59b6;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f3e5f5;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Lista de Productos</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f9f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #27ae60;
+      color: white;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 2rem auto;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #bdc3c7;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #ecf0f1;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1e8449;
+    }
+
+    footer {
+      background: #ddd;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    .redes a {
+      color: #27ae60;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    .redes a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h1>Inventario de Productos</h1>
+
+  <!-- ✅ MENÚ -->
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="Pagina1.html">Estudiantes</a>
+    <a href="Pagina2.html">Productos</a>
+    <a href="Pagina3.html">Horario</a>
+  </nav>
+
+  <!-- ✅ ENCABEZADO -->
+  <header>
+    <h1>Lista de Productos</h1>
+  </header>
+
+  <!-- ✅ TABLA DE PRODUCTOS -->
+  <main>
     <table>
-        <tr>
-            <th>Producto</th>
-            <th>Categoría</th>
-            <th>Precio</th>
-        </tr>
-        <tr>
-            <td>Laptop</td>
-            <td>Electrónica</td>
-            <td>$10,000</td>
-        </tr>
-        <tr>
-            <td>Silla de oficina</td>
-            <td>Muebles</td>
-            <td>$1,800</td>
-        </tr>
-        <tr>
-            <td>Teléfono</td>
-            <td>Electrónica</td>
-            <td>$8,000</td>
-        </tr>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Stock</th>
+      </tr>
+      <tr>
+        <td>Cuaderno</td>
+        <td>$2.00</td>
+        <td>150</td>
+      </tr>
+      <tr>
+        <td>Lápiz</td>
+        <td>$0.50</td>
+        <td>300</td>
+      </tr>
+      <tr>
+        <td>Mochila</td>
+        <td>$25.00</td>
+        <td>50</td>
+      </tr>
     </table>
+
+    <!-- ✅ BOTÓN VOLVER ARRIBA -->
+    <button onclick="window.scrollTo(0, 0)">Volver arriba</button>
+  </main>
+
+  <!-- ✅ PIE DE PÁGINA -->
+  <footer>
+    <p>© 2025 - Kevin Yair Viveros Garcia</p>
+    <div class="redes">
+      <a href="https://twitter.com" target="_blank">Twitter</a> |
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+    </div>
+  </footer>
+
 </body>
 </html>
