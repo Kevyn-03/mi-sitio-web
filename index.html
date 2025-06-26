@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - Mi Sitio Web</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #2e86de;
+      color: white;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    .boton {
+      display: inline-block;
+      margin: 1rem;
+      padding: 1rem 2rem;
+      background-color: #48c9b0;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .boton:hover {
+      background-color: #1abc9c;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background-color: #2e86de;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1b4f72;
+    }
+
+    footer {
+      background: #ddd;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    .redes a {
+      color: #2e86de;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    .redes a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ MENÚ DE NAVEGACIÓN SUPERIOR -->
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="Pagina1.html">Estudiantes</a>
+    <a href="Pagina2.html">Productos</a>
+    <a href="Pagina3.html">Horario</a>
+  </nav>
+
+  <!-- ✅ ENCABEZADO -->
+  <header>
+    <h1>Bienvenido a mi sitio</h1>
+    <p>Selecciona una página para visitar</p>
+  </header>
+
+  <!-- ✅ ENLACES PRINCIPALES -->
+  <main>
+    <a href="Pagina1.html" class="boton">Estudiantes</a>
+    <a href="Pagina2.html" class="boton">Productos</a>
+    <a href="Pagina3.html" class="boton">Horario</a>
+
+    <!-- ✅ BOTÓN VOLVER ARRIBA -->
+    <div>
+      <button onclick="window.scrollTo(0, 0)">Volver arriba</button>
+    </div>
+  </main>
+
+  <!-- ✅ PIE DE PÁGINA -->
+  <footer>
+    <p>© 2025 - Kevin Yair Viveros Garcia</p>
+    <div class="redes">
+      <a href="https://twitter.com" target="_blank">Twitter</a> |
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+    </div>
+  </footer>
+
+</body>
+</html>
