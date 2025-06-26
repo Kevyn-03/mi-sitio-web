@@ -1,63 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Horario Semanal</title>
-    <style>
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background-color: #f0f8ff;
-        }
-        h1 {
-            text-align: center;
-            color: #34495e;
-        }
-        table {
-            border-collapse: collapse;
-            width: 90%;
-            margin: 20px auto;
-            background-color: #ffffff;
-        }
-        th, td {
-            border: 1px solid #aaa;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #2980b9;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #eaf2f8;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Horario de Clases</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f9f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #9b59b6;
+      color: white;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: 2rem auto;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #8e44ad;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #6c3483;
+    }
+
+    footer {
+      background: #ddd;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    .redes a {
+      color: #9b59b6;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    .redes a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ✅ MENÚ -->
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="Pagina1.html">Estudiantes</a>
+    <a href="Pagina2.html">Productos</a>
+    <a href="Pagina3.html">Horario</a>
+  </nav>
+
+  <!-- ✅ ENCABEZADO -->
+  <header>
     <h1>Horario de Clases</h1>
+  </header>
+
+  <!-- ✅ TABLA DE HORARIO -->
+  <main>
     <table>
-        <tr>
-            <th>Hora</th>
-            <th>Lunes</th>
-            <th>Martes</th>
-            <th>Miércoles</th>
-            <th>Jueves</th>
-            <th>Viernes</th>
-        </tr>
-        <tr>
-            <td>08:00 - 09:00</td>
-            <td>Matemáticas</td>
-            <td>Física</td>
-            <td>Química</td>
-            <td>Biología</td>
-            <td>Historia</td>
-        </tr>
-        <tr>
-            <td>09:00 - 10:00</td>
-            <td>Lengua</td>
-            <td>Inglés</td>
-            <td>Filosofía</td>
-            <td>Arte</td>
-            <td>Educación Física</td>
-        </tr>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+      <tr>
+        <td>8:00 - 9:00</td>
+        <td>Matemáticas</td>
+        <td>Lengua</td>
+        <td>Historia</td>
+        <td>Inglés</td>
+        <td>Educ. Física</td>
+      </tr>
+      <tr>
+        <td>9:00 - 10:00</td>
+        <td>Biología</td>
+        <td>Geografía</td>
+        <td>Lengua</td>
+        <td>Química</td>
+        <td>Tutoría</td>
+      </tr>
+      <tr>
+        <td>10:00 - 10:30</td>
+        <td colspan="5">Recreo</td>
+      </tr>
+      <tr>
+        <td>10:30 - 11:30</td>
+        <td>Informática</td>
+        <td>Matemáticas</td>
+        <td>Biología</td>
+        <td>Historia</td>
+        <td>Artes</td>
+      </tr>
+      <tr>
+        <td>11:30 - 12:30</td>
+        <td>Química</td>
+        <td>Inglés</td>
+        <td>Informática</td>
+        <td>Matemáticas</td>
+        <td>Lengua</td>
+      </tr>
     </table>
+
+    <!-- ✅ BOTÓN VOLVER ARRIBA -->
+    <button onclick="window.scrollTo(0, 0)">Volver arriba</button>
+  </main>
+
+  <!-- ✅ PIE DE PÁGINA -->
+  <footer>
+    <p>© 2025 - Kevin Yair Viveros Garcia</p>
+    <div class="redes">
+      <a href="https://twitter.com" target="_blank">Twitter</a> |
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+    </div>
+  </footer>
+
 </body>
 </html>
