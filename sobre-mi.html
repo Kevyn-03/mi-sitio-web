@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre mí</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fefefe;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #e67e22;
+      color: white;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #ddd;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔗 MENÚ -->
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="Pagina1.html">Estudiantes</a>
+    <a href="Pagina2.html">Productos</a>
+    <a href="Pagina3.html">Horario</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+  </nav>
+
+  <!-- 👤 ENCABEZADO -->
+  <header>
+    <h1>Conóceme Mejor</h1>
+  </header>
+
+  <!-- 👨‍💻 BIOGRAFÍA -->
+  <section>
+    <h2>Hola, soy Kevin Yair Viveros Garcia</h2>
+    <p>
+      Soy estudiante apasionado por la tecnología, el diseño web y aprender cosas nuevas. Me gusta programar, jugar videojuegos, compartir con mis amigos y seguir creciendo en el mundo digital.
+    </p>
+
+    <h3>📸 Algunas fotos con mis amigos</h3>
+
+    <!-- 🖼️ GALERÍA DE FOTOS -->
+    <div class="galeria">
+      <img src="img/foto1.jpg" alt="Con mis amigos en la escuela">
+      <img src="img/foto2.jpg" alt="Selfie divertida">
+      <img src="img/foto3.jpg" alt="Paseo al parque">
+      <img src="img/foto4.jpg" alt="Cumpleaños">
+    </div>
+  </section>
+
+  <!-- 📝 PIE DE PÁGINA -->
+  <footer>
+    <p>© 2025 - Kevin Yair Viveros Garcia</p>
+  </footer>
+
+</body>
+</html>
