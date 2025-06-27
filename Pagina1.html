@@ -3,28 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Lista de Estudiantes</title>
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f9f9;
+    :root {
+      --primary: #2e86de;
+      --hover: #1b4f72;
+      --background: #f4f9f9;
+      --text: #333;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
       text-align: center;
     }
 
     nav {
       background-color: #222;
       padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      animation: fadeInDown 0.6s ease-in-out;
     }
 
     nav a {
-      color: white;
+      color: var(--white);
       text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     nav a:hover {
@@ -32,32 +50,34 @@
     }
 
     header {
-      background-color: #2e86de;
-      color: white;
+      background-color: var(--primary);
+      color: var(--white);
       padding: 2rem 1rem;
+      animation: fadeIn 1s ease;
     }
 
     h1 {
       margin: 0;
+      font-size: 2rem;
     }
 
     table {
-      border-collapse: collapse;
       width: 80%;
       margin: 2rem auto;
-      background-color: #ffffff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-collapse: collapse;
+      background-color: var(--white);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease;
     }
 
     th, td {
+      padding: 12px;
       border: 1px solid #bdc3c7;
-      padding: 10px;
-      text-align: center;
     }
 
     th {
       background-color: #3498db;
-      color: white;
+      color: var(--white);
     }
 
     tr:hover {
@@ -65,62 +85,75 @@
     }
 
     button {
-      margin-top: 2rem;
-      padding: 10px 20px;
-      background-color: #2e86de;
-      color: white;
+      margin: 2rem auto;
+      padding: 12px 24px;
+      background-color: var(--primary);
+      color: var(--white);
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     button:hover {
-      background-color: #1b4f72;
+      background-color: var(--hover);
     }
 
     footer {
       background: #ddd;
-      padding: 1rem;
+      padding: 1.2rem;
       margin-top: 3rem;
     }
 
     .redes a {
-      color: #2e86de;
+      color: var(--primary);
       text-decoration: none;
-      margin: 0 0.5rem;
+      margin: 0 0.7rem;
     }
 
     .redes a:hover {
       text-decoration: underline;
     }
 
-    i {
-      margin-right: 6px;
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ MENÚ -->
   <nav>
-    <a href="index.html"><i class="fas fa-home"></i>Inicio</a>
-    <a href="Pagina1.html"><i class="fas fa-user-graduate"></i>Estudiantes</a>
-    <a href="Pagina2.html"><i class="fas fa-box"></i>Productos</a>
-    <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i>Horario</a>
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <a href="Pagina1.html"><i class="fas fa-user-graduate"></i> Estudiantes</a>
+    <a href="Pagina2.html"><i class="fas fa-box"></i> Productos</a>
+    <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i> Horario</a>
   </nav>
 
-  <!-- ✅ ENCABEZADO -->
   <header>
-    <h1><i class="fas fa-list-ul"></i> Lista de Estudiantes</h1>
+    <h1><i class="fas fa-users"></i> Lista de Estudiantes</h1>
   </header>
 
-  <!-- ✅ TABLA -->
   <main>
     <table>
       <tr>
-        <th><i class="fas fa-user"></i>Nombre</th>
-        <th><i class="fas fa-birthday-cake"></i>Edad</th>
-        <th><i class="fas fa-book"></i>Curso</th>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Curso</th>
       </tr>
       <tr>
         <td>Ana López</td>
@@ -139,18 +172,14 @@
       </tr>
     </table>
 
-    <!-- ✅ BOTÓN VOLVER ARRIBA -->
-    <button onclick="window.scrollTo(0, 0)">
-      <i class="fas fa-arrow-up"></i> Volver arriba
-    </button>
+    <button onclick="window.scrollTo(0, 0)"><i class="fas fa-arrow-up"></i> Volver arriba</button>
   </main>
 
-  <!-- ✅ PIE DE PÁGINA -->
   <footer>
     <p>© 2025 - Kevin Yair Viveros Garcia</p>
     <div class="redes">
-      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i>Twitter</a> |
-      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a> |
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
     </div>
   </footer>
 
