@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inicio - Mi Sitio Web</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -94,17 +97,21 @@
       margin-top: 1rem;
       font-weight: bold;
     }
+
+    i {
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
 
   <!-- ✅ MENÚ DE NAVEGACIÓN SUPERIOR -->
   <nav>
-    <a href="index.html">Inicio</a>
-    <a href="Pagina1.html">Estudiantes</a>
-    <a href="Pagina2.html">Productos</a>
-    <a href="Pagina3.html">Horario</a>
-    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="index.html"><i class="fas fa-home"></i>Inicio</a>
+    <a href="Pagina1.html"><i class="fas fa-user-graduate"></i>Estudiantes</a>
+    <a href="Pagina2.html"><i class="fas fa-box"></i>Productos</a>
+    <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i>Horario</a>
+    <a href="sobre-mi.html"><i class="fas fa-user"></i>Sobre mí</a>
   </nav>
 
   <!-- ✅ ENCABEZADO -->
@@ -115,28 +122,36 @@
 
   <!-- ✅ ENLACES PRINCIPALES -->
   <main>
-    <a href="Pagina1.html" class="boton">Estudiantes</a>
-    <a href="Pagina2.html" class="boton">Productos</a>
-    <a href="Pagina3.html" class="boton">Horario</a>
-    <a href="sobre-mi.html" class="boton">Sobre mí</a>
+    <a href="Pagina1.html" class="boton"><i class="fas fa-user-graduate"></i>Estudiantes</a>
+    <a href="Pagina2.html" class="boton"><i class="fas fa-box-open"></i>Productos</a>
+    <a href="Pagina3.html" class="boton"><i class="fas fa-calendar"></i>Horario</a>
+    <a href="sobre-mi.html" class="boton"><i class="fas fa-user-circle"></i>Sobre mí</a>
 
     <!-- ✅ BOTÓN VOLVER ARRIBA -->
     <div>
-      <button onclick="window.scrollTo(0, 0)">Volver arriba</button>
+      <button onclick="window.scrollTo(0, 0)">
+        <i class="fas fa-arrow-up"></i> Volver arriba
+      </button>
     </div>
   </main>
 
   <!-- ✅ PIE DE PÁGINA -->
   <footer>
     <p>© 2025 - Kevin Yair Viveros Garcia</p>
-    
+
     <div class="redes">
-      <a href="https://x.com/_Doakki3" target="_blank">Twitter</a> |
-      <a href="https://www.facebook.com/kevinyair.viverosgarcia/?locale=es_LA" target="_blank">Facebook</a>
+      <a href="https://x.com/_Doakki3" target="_blank">
+        <i class="fab fa-twitter"></i>Twitter
+      </a> |
+      <a href="https://www.facebook.com/kevinyair.viverosgarcia/?locale=es_LA" target="_blank">
+        <i class="fab fa-facebook"></i>Facebook
+      </a>
     </div>
 
     <!-- 🔗 ENLACE EXTRA A SOBRE MÍ -->
-    <a href="sobre-mi.html" class="footer-link">Conóceme más en la página Sobre mí</a>
+    <a href="sobre-mi.html" class="footer-link">
+      <i class="fas fa-user-tag"></i>Conóceme más en la página Sobre mí
+    </a>
   </footer>
 
 </body>
