@@ -3,28 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Lista de Estudiantes</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    :root {
-      --primary: #2e86de;
-      --hover: #1b4f72;
-      --background: #f4f9f9;
-      --text: #333;
-      --white: #fff;
-    }
-
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-      text-align: center;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
     }
 
     nav {
@@ -32,111 +26,120 @@
       padding: 1rem;
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      animation: fadeInDown 0.6s ease-in-out;
     }
 
     nav a {
-      color: var(--white);
+      color: white;
       text-decoration: none;
+      margin: 0 1.2rem;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: #3498db;
     }
 
     header {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 2rem 1rem;
-      animation: fadeIn 1s ease;
+      background: linear-gradient(to right, #3498db, #2980b9);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
     }
 
     h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     table {
-      width: 80%;
-      margin: 2rem auto;
       border-collapse: collapse;
-      background-color: var(--white);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      animation: fadeInUp 1s ease;
+      width: 80%;
+      margin: 3rem auto;
+      background-color: #fff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      animation: fadeIn 1s ease;
     }
 
     th, td {
-      padding: 12px;
-      border: 1px solid #bdc3c7;
+      padding: 14px 16px;
+      text-align: center;
     }
 
     th {
-      background-color: #3498db;
-      color: var(--white);
+      background-color: #2980b9;
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
     }
 
     tr:hover {
-      background-color: #ecf0f1;
+      background-color: #eaf2f8;
     }
 
     button {
       margin: 2rem auto;
+      display: block;
       padding: 12px 24px;
-      background-color: var(--primary);
-      color: var(--white);
+      background-color: #3498db;
+      color: white;
       border: none;
       border-radius: 8px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: var(--hover);
+      background-color: #21618c;
+    }
+
+    button i {
+      margin-right: 8px;
     }
 
     footer {
-      background: #ddd;
-      padding: 1.2rem;
-      margin-top: 3rem;
+      background: #f0f0f0;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
     }
 
     .redes a {
-      color: var(--primary);
+      color: #3498db;
       text-decoration: none;
-      margin: 0 0.7rem;
+      margin: 0 0.6rem;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
     }
 
     .redes a:hover {
+      transform: scale(1.1);
       text-decoration: underline;
     }
 
+    /* Animaciones */
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes fadeInUp {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
     }
 
     @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-20px);}
+      from {opacity: 0; transform: translateY(-30px);}
       to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 <body>
 
+  <!-- 🔗 MENÚ -->
   <nav>
     <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
     <a href="Pagina1.html"><i class="fas fa-user-graduate"></i> Estudiantes</a>
@@ -144,37 +147,43 @@
     <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i> Horario</a>
   </nav>
 
+  <!-- 👩‍🎓 ENCABEZADO -->
   <header>
-    <h1><i class="fas fa-users"></i> Lista de Estudiantes</h1>
+    <h1><i class="fas fa-user-graduate"></i> Lista de Estudiantes</h1>
   </header>
 
+  <!-- 👥 TABLA DE ESTUDIANTES -->
   <main>
     <table>
       <tr>
         <th>Nombre</th>
         <th>Edad</th>
-        <th>Curso</th>
+        <th>Grado</th>
       </tr>
       <tr>
-        <td>Ana López</td>
-        <td>18</td>
-        <td>Matemáticas</td>
+        <td>Andrea Martínez</td>
+        <td>16</td>
+        <td>10°</td>
       </tr>
       <tr>
-        <td>Juan Reyes</td>
-        <td>18</td>
-        <td>Historia</td>
+        <td>Juan Pérez</td>
+        <td>17</td>
+        <td>11°</td>
       </tr>
       <tr>
-        <td>Luisa Gómez</td>
-        <td>20</td>
-        <td>Biología</td>
+        <td>Lucía Gómez</td>
+        <td>15</td>
+        <td>9°</td>
       </tr>
     </table>
 
-    <button onclick="window.scrollTo(0, 0)"><i class="fas fa-arrow-up"></i> Volver arriba</button>
+    <!-- 🔝 BOTÓN VOLVER ARRIBA -->
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <i class="fas fa-arrow-up"></i> Volver arriba
+    </button>
   </main>
 
+  <!-- 📢 PIE DE PÁGINA -->
   <footer>
     <p>© 2025 - Kevin Yair Viveros Garcia</p>
     <div class="redes">
