@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Lista de Estudiantes</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -90,30 +93,34 @@
     .redes a:hover {
       text-decoration: underline;
     }
+
+    i {
+      margin-right: 6px;
+    }
   </style>
 </head>
 <body>
 
   <!-- ✅ MENÚ -->
   <nav>
-    <a href="index.html">Inicio</a>
-    <a href="Pagina1.html">Estudiantes</a>
-    <a href="Pagina2.html">Productos</a>
-    <a href="Pagina3.html">Horario</a>
+    <a href="index.html"><i class="fas fa-home"></i>Inicio</a>
+    <a href="Pagina1.html"><i class="fas fa-user-graduate"></i>Estudiantes</a>
+    <a href="Pagina2.html"><i class="fas fa-box"></i>Productos</a>
+    <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i>Horario</a>
   </nav>
 
   <!-- ✅ ENCABEZADO -->
   <header>
-    <h1>Lista de Estudiantes</h1>
+    <h1><i class="fas fa-list-ul"></i> Lista de Estudiantes</h1>
   </header>
 
   <!-- ✅ TABLA -->
   <main>
     <table>
       <tr>
-        <th>Nombre</th>
-        <th>Edad</th>
-        <th>Curso</th>
+        <th><i class="fas fa-user"></i>Nombre</th>
+        <th><i class="fas fa-birthday-cake"></i>Edad</th>
+        <th><i class="fas fa-book"></i>Curso</th>
       </tr>
       <tr>
         <td>Ana López</td>
@@ -133,15 +140,17 @@
     </table>
 
     <!-- ✅ BOTÓN VOLVER ARRIBA -->
-    <button onclick="window.scrollTo(0, 0)">Volver arriba</button>
+    <button onclick="window.scrollTo(0, 0)">
+      <i class="fas fa-arrow-up"></i> Volver arriba
+    </button>
   </main>
 
   <!-- ✅ PIE DE PÁGINA -->
   <footer>
     <p>© 2025 - Kevin Yair Viveros Garcia</p>
     <div class="redes">
-      <a href="https://twitter.com" target="_blank">Twitter</a> |
-      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i>Twitter</a> |
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
     </div>
   </footer>
 
