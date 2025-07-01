@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Lista de Estudiantes</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estudiantes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     * {
       box-sizing: border-box;
       scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 0;
+      background-color: #fafafa;
       color: #333;
     }
 
@@ -26,14 +25,19 @@
       padding: 1rem;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 1.2rem;
       font-weight: 600;
       transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
     }
 
     nav a:hover {
@@ -43,77 +47,42 @@
     header {
       background: linear-gradient(to right, #3498db, #2980b9);
       color: white;
-      padding: 2.5rem 1rem;
+      padding: 3rem 1rem;
       text-align: center;
       animation: fadeInDown 1s ease-in-out;
     }
 
-    h1 {
-      margin: 0;
+    header h1 {
       font-size: 2.5rem;
     }
 
-    table {
-      border-collapse: collapse;
-      width: 80%;
-      margin: 3rem auto;
-      background-color: #fff;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      border-radius: 12px;
-      overflow: hidden;
-      animation: fadeIn 1s ease;
-    }
-
-    th, td {
-      padding: 14px 16px;
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
+      animation: fadeIn 1s ease-in;
       text-align: center;
     }
 
-    th {
-      background-color: #2980b9;
-      color: white;
-      font-weight: 600;
-    }
-
-    tr:nth-child(even) {
-      background-color: #fafafa;
-    }
-
-    tr:hover {
-      background-color: #eaf2f8;
-    }
-
-    button {
-      margin: 2rem auto;
-      display: block;
-      padding: 12px 24px;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #21618c;
-    }
-
-    button i {
-      margin-right: 8px;
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     footer {
       background: #f0f0f0;
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
       text-align: center;
-      margin-top: 4rem;
       font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    .redes {
+      margin-top: 0.5rem;
     }
 
     .redes a {
-      color: #3498db;
+      color: #2980b9;
       text-decoration: none;
       margin: 0 0.6rem;
       font-size: 1.1rem;
@@ -127,67 +96,74 @@
 
     /* Animaciones */
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-30px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
+
+      main p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        font-size: 0.95rem;
+      }
+
+      main p {
+        font-size: 0.95rem;
+      }
+
+      .redes a {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔗 MENÚ -->
   <nav>
-<nav>
-  <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-  <a href="Pagina1.html"><i class="fas fa-user-graduate"></i> Estudiantes</a>
-  <a href="Pagina2.html"><i class="fas fa-box"></i> Productos</a>
-  <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i> Horario</a>
-  <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre mí</a>
-</nav>
-
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <a href="Pagina1.html"><i class="fas fa-user-graduate"></i> Estudiantes</a>
+    <a href="Pagina2.html"><i class="fas fa-box-open"></i> Productos</a>
+    <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i> Horario</a>
+    <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre mí</a>
   </nav>
 
-  <!-- 👩‍🎓 ENCABEZADO -->
   <header>
-    <h1><i class="fas fa-user-graduate"></i> Lista de Estudiantes</h1>
+    <h1>Estudiantes</h1>
   </header>
 
-  <!-- 👥 TABLA DE ESTUDIANTES -->
   <main>
-    <table>
-      <tr>
-        <th>Nombre</th>
-        <th>Edad</th>
-        <th>Grado</th>
-      </tr>
-      <tr>
-        <td>Andrea Martínez</td>
-        <td>16</td>
-        <td>10°</td>
-      </tr>
-      <tr>
-        <td>Juan Pérez</td>
-        <td>17</td>
-        <td>11°</td>
-      </tr>
-      <tr>
-        <td>Lucía Gómez</td>
-        <td>15</td>
-        <td>9°</td>
-      </tr>
-    </table>
-
-    <!-- 🔝 BOTÓN VOLVER ARRIBA -->
-    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-      <i class="fas fa-arrow-up"></i> Volver arriba
-    </button>
+    <p>En esta sección encontrarás la lista de estudiantes y sus respectivos datos académicos.</p>
+    <!-- Puedes agregar una tabla o tarjetas aquí -->
   </main>
 
-  <!-- 📢 PIE DE PÁGINA -->
   <footer>
     <p>© 2025 - Kevin Yair Viveros Garcia</p>
     <div class="redes">
