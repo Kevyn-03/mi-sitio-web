@@ -57,16 +57,38 @@
     }
 
     main {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       padding: 2rem 1rem;
       animation: fadeIn 1s ease-in;
-      text-align: center;
     }
 
-    main p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    main h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f2f2f2;
     }
 
     footer {
@@ -94,7 +116,6 @@
       text-decoration: underline;
     }
 
-    /* Animaciones */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -105,7 +126,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
@@ -121,26 +141,35 @@
         font-size: 1rem;
       }
 
-      main p {
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
+      table, thead, tbody, th, td, tr {
+        display: block;
       }
 
-      nav a {
-        font-size: 0.95rem;
+      thead tr {
+        display: none;
       }
 
-      main p {
-        font-size: 0.95rem;
+      tr {
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        padding: 1rem;
+        background-color: white;
       }
 
-      .redes a {
-        font-size: 1rem;
+      td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        font-weight: bold;
+        color: #3498db;
+        text-align: left;
       }
     }
   </style>
@@ -160,8 +189,33 @@
   </header>
 
   <main>
-    <p>En esta sección encontrarás la lista de estudiantes y sus respectivos datos académicos.</p>
-    <!-- Puedes agregar una tabla o tarjetas aquí -->
+    <h2>Lista de Estudiantes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Grado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Nombre">Carlos Pérez</td>
+          <td data-label="Edad">15</td>
+          <td data-label="Grado">10°</td>
+        </tr>
+        <tr>
+          <td data-label="Nombre">Ana Rodríguez</td>
+          <td data-label="Edad">14</td>
+          <td data-label="Grado">9°</td>
+        </tr>
+        <tr>
+          <td data-label="Nombre">Luis Martínez</td>
+          <td data-label="Edad">16</td>
+          <td data-label="Grado">11°</td>
+        </tr>
+      </tbody>
+    </table>
   </main>
 
   <footer>
