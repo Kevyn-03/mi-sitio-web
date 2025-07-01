@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inicio</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     * {
       box-sizing: border-box;
       scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
       background-color: #fafafa;
       color: #333;
     }
@@ -25,14 +27,19 @@
       padding: 1rem;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 1.2rem;
       font-weight: 600;
       transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
     }
 
     nav a:hover {
@@ -48,29 +55,32 @@
     }
 
     header h1 {
-      font-size: 3rem;
-      margin: 0;
+      font-size: 2.5rem;
     }
 
     main {
       max-width: 800px;
       margin: auto;
-      padding: 2rem;
+      padding: 2rem 1rem;
       animation: fadeIn 1s ease-in;
       text-align: center;
     }
 
     main p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1.6;
     }
 
     footer {
       background: #f0f0f0;
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       font-size: 0.9rem;
       margin-top: 3rem;
+    }
+
+    .redes {
+      margin-top: 0.5rem;
     }
 
     .redes a {
@@ -88,13 +98,52 @@
 
     /* Animaciones */
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-30px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✅ Responsividad */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
+
+      main p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        font-size: 0.95rem;
+      }
+
+      main p {
+        font-size: 0.95rem;
+      }
+
+      .redes a {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -104,7 +153,7 @@
   <nav>
     <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
     <a href="Pagina1.html"><i class="fas fa-user-graduate"></i> Estudiantes</a>
-    <a href="Pagina2.html"><i class="fas fa-box"></i> Productos</a>
+    <a href="Pagina2.html"><i class="fas fa-box-open"></i> Productos</a>
     <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i> Horario</a>
     <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre mí</a>
   </nav>
