@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -22,73 +22,28 @@
       color: #333;
     }
 
-    /* 🌐 NAVBAR RESPONSIVE */
-    .navbar {
+    nav {
       background-color: #222;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 1rem;
-      color: white;
-      position: relative;
-      z-index: 999;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    .menu-toggle {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.8rem;
-      display: none;
-      cursor: pointer;
-    }
-
-    .nav-links {
       display: flex;
-      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .nav-links a {
+    nav a {
       color: white;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
     }
 
-    .nav-links a:hover {
+    nav a:hover {
       color: #e67e22;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #222;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        padding: 1rem;
-        text-align: center;
-      }
-
-      .nav-links a {
-        padding: 0.8rem 0;
-        border-bottom: 1px solid #444;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
     }
 
     header {
@@ -135,7 +90,7 @@
 
     .galeria img {
       width: 100%;
-      aspect-ratio: 3/4;
+      height: 220px;
       object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -185,22 +140,28 @@
       header h1 {
         font-size: 2rem;
       }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🌐 MENÚ RESPONSIVE -->
-  <nav class="navbar">
-    <div class="logo">Kevin</div>
-    <button class="menu-toggle" id="menu-toggle">☰</button>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Inicio</a>
-      <a href="Pagina1.html">Estudiantes</a>
-      <a href="Pagina2.html">Productos</a>
-      <a href="Pagina3.html">Horario</a>
-      <a href="sobre-mi.html">Sobre mí</a>
-    </div>
+  <!-- 🔗 MENÚ -->
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <a href="Pagina1.html"><i class="fas fa-user-graduate"></i> Estudiantes</a>
+    <a href="Pagina2.html"><i class="fas fa-box-open"></i> Productos</a>
+    <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i> Horario</a>
+    <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre mí</a>
   </nav>
 
   <!-- 👤 ENCABEZADO -->
@@ -220,10 +181,10 @@
 
     <!-- 🖼️ GALERÍA DE FOTOS -->
     <div class="galeria">
-      <img src="https://tu-url-directa-a-la-imagen/5.jpg" alt="Con mis 5/5">
-      <img src="https://tu-url-directa-a-la-imagen/Yael.jpg" alt="Selfie Random">
-      <img src="https://tu-url-directa-a-la-imagen/BChino.jpg" alt="Barrio Chino">
-      <img src="https://tu-url-directa-a-la-imagen/Yo.jpg" alt="Yo">
+      <img src="https://raw.githubusercontent.com/Kevyn-03/mi-sitio-web/main/5.jpg" alt="Con mis 5/5">
+      <img src="https://raw.githubusercontent.com/Kevyn-03/mi-sitio-web/main/Yael.jpg" alt="Selfie Random">
+      <img src="https://raw.githubusercontent.com/Kevyn-03/mi-sitio-web/main/BChino.jpg" alt="Barrio Chino">
+      <img src="https://raw.githubusercontent.com/Kevyn-03/mi-sitio-web/main/Yo.jpg" alt="Yo">
     </div>
   </main>
 
@@ -236,14 +197,5 @@
     </div>
   </footer>
 
-  <!-- JS PARA MENU HAMBURGUESA -->
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const links = document.getElementById('nav-links');
-
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('active');
-    });
-  </script>
 </body>
 </html>
