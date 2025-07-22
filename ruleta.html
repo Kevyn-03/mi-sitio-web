@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruleta de Nombres</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fffdfa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      color: #e67e22;
+    }
+
+    #canvas {
+      margin: 2rem auto;
+      border: 8px solid #e67e22;
+      border-radius: 50%;
+      background: white;
+    }
+
+    .controls {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      width: 200px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      margin: 0.5rem;
+    }
+
+    button {
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #21618c;
+    }
+
+    #result {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      color: #d35400;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      input { width: 100%; }
+      canvas { width: 280px !important; height: 280px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎡 Ruleta de Nombres</h1>
+
+  <div class="controls">
+    <input type="text" id="nombreInput" placeholder="Agrega un nombre" maxlength="20">
+    <button onclick="agregarNombre()">Agregar</button>
+    <button onclick="girarRuleta()">Girar</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+  </div>
+
+  <canvas id="canvas" width="400" height="400"></canvas>
+
+  <div id="result"></div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const nombres = [];
+    const colores = ["#e67e22", "#3498db", "#f39c12", "#2ecc71", "#9b59b6", "#1abc9c",
+                     "#d35400", "#2980b9", "#f1c40f", "#27ae60", "#8e44ad", "#16a085",
+                     "#ff7675", "#00cec9", "#fd79a8", "#6c5ce7", "#fab1a0", "#81ecec",
+                     "#a29bfe", "#ffeaa7"];
+
+    let anguloInicio = 0;
+    let girando = false;
+
+    function dibujarRuleta() {
+      const total = nombres.length;
+      const radio = canvas.width / 2;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < total; i++) {
+        const angulo = (Math.PI * 2) / total;
+        const inicio = anguloInicio + i * angulo;
+
+        // Sección
+        ctx.beginPath();
+        ctx.moveTo(radio, radio);
+        ctx.arc(radio, radio, radio, inicio, inicio + angulo);
+        ctx.fillStyle = colores[i % colores.length];
+        ctx.fill();
+        ctx.closePath();
+
+        // Texto
+        ctx.save();
+        ctx.translate(radio, radio);
+        ctx.rotate(inicio + angulo / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "white";
+        ctx.font = "bold 14px Poppins";
+        ctx.fillText(nombres[i], radio - 10, 5);
+        ctx.restore();
+      }
+
+      // Línea indicadora
+      ctx.beginPath();
+      ctx.moveTo(radio, 0);
+      ctx.lineTo(radio - 10, 20);
+      ctx.lineTo(radio + 10, 20);
+      ctx.fillStyle = "#e74c3c";
+      ctx.fill();
+    }
+
+    function agregarNombre() {
+      const input = document.getElementById("nombreInput");
+      const nombre = input.value.trim();
+      if (nombre && nombres.length < 20) {
+        nombres.push(nombre);
+        input.value = "";
+        dibujarRuleta();
+      } else if (nombres.length >= 20) {
+        alert("Máximo 20 nombres.");
+      }
+    }
+
+    function girarRuleta() {
+      if (nombres.length < 2 || girando) {
+        alert("Agrega al menos 2 nombres.");
+        return;
+      }
+
+      girando = true;
+      let velocidad = Math.random() * 10 + 15;
+      const deceleracion = 0.05;
+
+      const intervalo = setInterval(() => {
+        anguloInicio += velocidad * Math.PI / 180;
+        velocidad *= (1 - deceleracion);
+        dibujarRuleta();
+
+        if (velocidad <= 0.2) {
+          clearInterval(intervalo);
+          girando = false;
+
+          const anguloFinal = anguloInicio % (2 * Math.PI);
+          const indiceGanador = Math.floor((nombres.length - (anguloFinal / (2 * Math.PI)) * nombres.length)) % nombres.length;
+          document.getElementById("result").textContent = `🎉 Ganador: ${nombres[indiceGanador]} 🎉`;
+        }
+      }, 20);
+    }
+
+    function reiniciar() {
+      nombres.length = 0;
+      anguloInicio = 0;
+      document.getElementById("result").textContent = "";
+      dibujarRuleta();
+    }
+
+    dibujarRuleta();
+  </script>
+
+</body>
+</html>
