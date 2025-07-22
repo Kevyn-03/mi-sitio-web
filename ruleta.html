@@ -252,9 +252,11 @@
         if (velocidad <= 0) {
           girando = false;
           const anguloFinal = (Math.PI * 2 - anguloInicio + Math.PI / 2) % (Math.PI * 2);
-          const elegido = Math.floor((anguloFinal / (Math.PI * 2)) * nombres.length) % nombres.length;
-          resultadoDiv.textContent = `🎉 Seleccionado: ${nombres[elegido]}`;
-          void resultadoDiv.offsetWidth; // fuerza reinicio de animación
+          const anguloPorNombre = (Math.PI * 2) / nombres.length;
+          let indice = Math.floor((anguloInicio % (Math.PI * 2)) / anguloPorNombre);
+          indice = (nombres.length - indice) % nombres.length;
+          resultadoDiv.textContent = `🎉 Seleccionado: ${nombres[indice]}`;
+          void resultadoDiv.offsetWidth; 
           resultadoDiv.classList.add("animado");
           return;
         }
