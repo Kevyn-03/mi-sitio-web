@@ -4,183 +4,220 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ruleta de Nombres</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #fffdfa;
+      background-color: #fafafa;
       color: #333;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 1rem;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
       align-items: center;
-      padding: 2rem 1rem;
+      gap: 0.5rem;
     }
 
-    h1 {
-      margin-bottom: 1rem;
-      color: #e67e22;
+    nav a:hover {
+      color: #3498db;
     }
 
-    #canvas {
-      margin: 2rem auto;
-      border: 8px solid #e67e22;
-      border-radius: 50%;
-      background: white;
-    }
-
-    .controls {
+    header {
+      background: linear-gradient(to right, #3498db, #2980b9);
+      color: white;
+      padding: 3rem 1rem;
       text-align: center;
-      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease-in-out;
     }
 
-    input {
-      padding: 0.5rem;
-      width: 200px;
-      border: 2px solid #ccc;
-      border-radius: 6px;
-      margin: 0.5rem;
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    canvas {
+      margin: 2rem auto;
+      display: block;
+      max-width: 100%;
+    }
+
+    .input-area {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+      font-family: 'Poppins', sans-serif;
     }
 
     button {
-      padding: 0.6rem 1.2rem;
-      margin: 0.3rem;
-      border: none;
+      margin-top: 1rem;
       background-color: #3498db;
       color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 10px;
       font-weight: bold;
-      border-radius: 6px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s;
     }
 
     button:hover {
-      background-color: #21618c;
+      background-color: #2980b9;
     }
 
-    #result {
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      color: #d35400;
-      font-weight: 600;
+    footer {
+      background: #f0f0f0;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 3rem;
     }
 
-    @media (max-width: 600px) {
-      input { width: 100%; }
-      canvas { width: 280px !important; height: 280px !important; }
+    .redes a {
+      color: #2980b9;
+      text-decoration: none;
+      margin: 0 0.6rem;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .redes a:hover {
+      transform: scale(1.1);
+      text-decoration: underline;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <h1>🎡 Ruleta de Nombres</h1>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+    <a href="Pagina1.html"><i class="fas fa-user-graduate"></i> Estudiantes</a>
+    <a href="Pagina2.html"><i class="fas fa-box-open"></i> Productos</a>
+    <a href="Pagina3.html"><i class="fas fa-calendar-alt"></i> Horario</a>
+    <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre mí</a>
+    <a href="ruleta.html"><i class="fas fa-dice"></i> Ruleta</a>
+  </nav>
 
-  <div class="controls">
-    <input type="text" id="nombreInput" placeholder="Agrega un nombre" maxlength="20">
-    <button onclick="agregarNombre()">Agregar</button>
-    <button onclick="girarRuleta()">Girar</button>
-    <button onclick="reiniciar()">Reiniciar</button>
-  </div>
+  <header>
+    <h1><i class="fas fa-dice"></i> Ruleta de Nombres</h1>
+  </header>
 
-  <canvas id="canvas" width="400" height="400"></canvas>
+  <main>
+    <canvas id="ruleta" width="400" height="400"></canvas>
+    <button onclick="girar()">Girar</button>
 
-  <div id="result"></div>
+    <div class="input-area">
+      <p>Ingresa los nombres separados por comas (máx 20):</p>
+      <textarea id="nombres">Kevin,Yair,Yael,Luis,Emiliano</textarea>
+      <button onclick="actualizarRuleta()">Actualizar Ruleta</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 - Kevin Yair Viveros Garcia</p>
+    <div class="redes">
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a> |
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+  </footer>
 
   <script>
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById("ruleta");
     const ctx = canvas.getContext("2d");
-    const nombres = [];
-    const colores = ["#e67e22", "#3498db", "#f39c12", "#2ecc71", "#9b59b6", "#1abc9c",
-                     "#d35400", "#2980b9", "#f1c40f", "#27ae60", "#8e44ad", "#16a085",
-                     "#ff7675", "#00cec9", "#fd79a8", "#6c5ce7", "#fab1a0", "#81ecec",
-                     "#a29bfe", "#ffeaa7"];
-
+    let nombres = [];
     let anguloInicio = 0;
     let girando = false;
+    let colores = ["#3498db", "#2980b9", "#85c1e9", "#aed6f1", "#5dade2", "#2874a6", "#1abc9c", "#48c9b0", "#f39c12", "#e67e22", "#f4d03f", "#e74c3c", "#c0392b", "#9b59b6", "#8e44ad", "#2ecc71", "#27ae60", "#16a085", "#f5b041", "#d35400"];
 
-    function dibujarRuleta() {
+    function actualizarRuleta() {
+      const input = document.getElementById("nombres").value;
+      nombres = input.split(",").map(n => n.trim()).filter(n => n !== "").slice(0, 20);
+      dibujar();
+    }
+
+    function dibujar() {
       const total = nombres.length;
       const radio = canvas.width / 2;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       for (let i = 0; i < total; i++) {
         const angulo = (Math.PI * 2) / total;
-        const inicio = anguloInicio + i * angulo;
-
-        // Sección
         ctx.beginPath();
-        ctx.moveTo(radio, radio);
-        ctx.arc(radio, radio, radio, inicio, inicio + angulo);
         ctx.fillStyle = colores[i % colores.length];
+        ctx.moveTo(radio, radio);
+        ctx.arc(radio, radio, radio, anguloInicio + i * angulo, anguloInicio + (i + 1) * angulo);
         ctx.fill();
-        ctx.closePath();
-
-        // Texto
         ctx.save();
         ctx.translate(radio, radio);
-        ctx.rotate(inicio + angulo / 2);
+        ctx.rotate(anguloInicio + (i + 0.5) * angulo);
         ctx.textAlign = "right";
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "#fff";
         ctx.font = "bold 14px Poppins";
         ctx.fillText(nombres[i], radio - 10, 5);
         ctx.restore();
       }
-
-      // Línea indicadora
-      ctx.beginPath();
-      ctx.moveTo(radio, 0);
-      ctx.lineTo(radio - 10, 20);
-      ctx.lineTo(radio + 10, 20);
-      ctx.fillStyle = "#e74c3c";
-      ctx.fill();
     }
 
-    function agregarNombre() {
-      const input = document.getElementById("nombreInput");
-      const nombre = input.value.trim();
-      if (nombre && nombres.length < 20) {
-        nombres.push(nombre);
-        input.value = "";
-        dibujarRuleta();
-      } else if (nombres.length >= 20) {
-        alert("Máximo 20 nombres.");
-      }
-    }
-
-    function girarRuleta() {
-      if (nombres.length < 2 || girando) {
-        alert("Agrega al menos 2 nombres.");
-        return;
-      }
-
+    function girar() {
+      if (girando || nombres.length === 0) return;
       girando = true;
-      let velocidad = Math.random() * 10 + 15;
-      const deceleracion = 0.05;
-
-      const intervalo = setInterval(() => {
-        anguloInicio += velocidad * Math.PI / 180;
-        velocidad *= (1 - deceleracion);
-        dibujarRuleta();
-
-        if (velocidad <= 0.2) {
-          clearInterval(intervalo);
+      let velocidad = Math.random() * 0.3 + 0.3;
+      const freno = 0.005;
+      const animar = () => {
+        if (velocidad <= 0) {
           girando = false;
-
-          const anguloFinal = anguloInicio % (2 * Math.PI);
-          const indiceGanador = Math.floor((nombres.length - (anguloFinal / (2 * Math.PI)) * nombres.length)) % nombres.length;
-          document.getElementById("result").textContent = `🎉 Ganador: ${nombres[indiceGanador]} 🎉`;
+          const anguloFinal = (Math.PI * 2 - anguloInicio + Math.PI / 2) % (Math.PI * 2);
+          const elegido = Math.floor((anguloFinal / (Math.PI * 2)) * nombres.length) % nombres.length;
+          alert("Seleccionado: " + nombres[elegido]);
+          return;
         }
-      }, 20);
+        anguloInicio += velocidad;
+        velocidad -= freno;
+        dibujar();
+        requestAnimationFrame(animar);
+      };
+      animar();
     }
 
-    function reiniciar() {
-      nombres.length = 0;
-      anguloInicio = 0;
-      document.getElementById("result").textContent = "";
-      dibujarRuleta();
-    }
-
-    dibujarRuleta();
+    actualizarRuleta();
   </script>
 
 </body>
