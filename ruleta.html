@@ -99,12 +99,18 @@
       background-color: #2980b9;
     }
 
-    footer {
-      background: #f0f0f0;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 3rem;
+    #resultado {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2980b9;
+      background-color: #eaf3fb;
+      border: 2px solid #3498db;
+      padding: 1rem;
+      border-radius: 12px;
+      display: inline-block;
+      min-width: 200px;
+      animation: fadeInResult 0.5s ease-out;
     }
 
     .redes a {
@@ -120,9 +126,42 @@
       text-decoration: underline;
     }
 
+    footer {
+      background: #f0f0f0;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-30px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInResult {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .animado {
+      animation: fadeInResult 0.5s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -141,85 +180,94 @@
     <h1><i class="fas fa-dice"></i> Ruleta de Nombres</h1>
   </header>
   
-<main>
-  <canvas id="ruleta" width="400" height="400"></canvas>
-  <button onclick="girar()">Girar</button>
+  <main>
+    <canvas id="ruleta" width="400" height="400"></canvas>
+    <button onclick="girar()">Girar</button>
 
-  <div class="input-area">
-    <p>Ingresa los nombres separados por comas (máx 20):</p>
-    <textarea id="nombres">Kevin,Yair,Yael,Luis,Emiliano</textarea>
-    <button onclick="actualizarRuleta()">Actualizar Ruleta</button>
-  </div>
+    <div class="input-area">
+      <p>Ingresa los nombres separados por comas (máx 20):</p>
+      <textarea id="nombres">Kevin,Yair,Yael,Luis,Emiliano</textarea>
+      <button onclick="actualizarRuleta()">Actualizar Ruleta</button>
+    </div>
 
-  <div id="resultado" style="
-    margin-top: 2rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2980b9;
-    text-align: center;
-    min-height: 2rem;
-  "></div>
-</main>
-<script>
-  const canvas = document.getElementById("ruleta");
-  const ctx = canvas.getContext("2d");
-  const resultadoDiv = document.getElementById("resultado");
+    <div id="resultado"></div>
+  </main>
 
-  let nombres = [];
-  let anguloInicio = 0;
-  let girando = false;
-  let colores = ["#3498db", "#2980b9", "#85c1e9", "#aed6f1", "#5dade2", "#2874a6", "#1abc9c", "#48c9b0", "#f39c12", "#e67e22", "#f4d03f", "#e74c3c", "#c0392b", "#9b59b6", "#8e44ad", "#2ecc71", "#27ae60", "#16a085", "#f5b041", "#d35400"];
+  <footer>
+    <p>© 2025 - Kevin Yair Viveros Garcia</p>
+    <div class="redes">
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a> |
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+  </footer>
 
-  function actualizarRuleta() {
-    const input = document.getElementById("nombres").value;
-    nombres = input.split(",").map(n => n.trim()).filter(n => n !== "").slice(0, 20);
-    resultadoDiv.textContent = "";
-    dibujar();
-  }
+  <script>
+    const canvas = document.getElementById("ruleta");
+    const ctx = canvas.getContext("2d");
+    const resultadoDiv = document.getElementById("resultado");
 
-  function dibujar() {
-    const total = nombres.length;
-    const radio = canvas.width / 2;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < total; i++) {
-      const angulo = (Math.PI * 2) / total;
-      ctx.beginPath();
-      ctx.fillStyle = colores[i % colores.length];
-      ctx.moveTo(radio, radio);
-      ctx.arc(radio, radio, radio, anguloInicio + i * angulo, anguloInicio + (i + 1) * angulo);
-      ctx.fill();
-      ctx.save();
-      ctx.translate(radio, radio);
-      ctx.rotate(anguloInicio + (i + 0.5) * angulo);
-      ctx.textAlign = "right";
-      ctx.fillStyle = "#fff";
-      ctx.font = "bold 14px Poppins";
-      ctx.fillText(nombres[i], radio - 10, 5);
-      ctx.restore();
-    }
-  }
+    let nombres = [];
+    let anguloInicio = 0;
+    let girando = false;
+    let colores = ["#3498db", "#2980b9", "#85c1e9", "#aed6f1", "#5dade2", "#2874a6", "#1abc9c", "#48c9b0", "#f39c12", "#e67e22", "#f4d03f", "#e74c3c", "#c0392b", "#9b59b6", "#8e44ad", "#2ecc71", "#27ae60", "#16a085", "#f5b041", "#d35400"];
 
-  function girar() {
-    if (girando || nombres.length === 0) return;
-    girando = true;
-    resultadoDiv.textContent = "Girando...";
-    let velocidad = Math.random() * 0.3 + 0.3;
-    const freno = 0.005;
-    const animar = () => {
-      if (velocidad <= 0) {
-        girando = false;
-        const anguloFinal = (Math.PI * 2 - anguloInicio + Math.PI / 2) % (Math.PI * 2);
-        const elegido = Math.floor((anguloFinal / (Math.PI * 2)) * nombres.length) % nombres.length;
-        resultadoDiv.textContent = `Seleccionado: ${nombres[elegido]}`;
-        return;
-      }
-      anguloInicio += velocidad;
-      velocidad -= freno;
+    function actualizarRuleta() {
+      const input = document.getElementById("nombres").value;
+      nombres = input.split(",").map(n => n.trim()).filter(n => n !== "").slice(0, 20);
+      resultadoDiv.textContent = "";
+      resultadoDiv.classList.remove("animado");
       dibujar();
-      requestAnimationFrame(animar);
-    };
-    animar();
-  }
+    }
 
-  actualizarRuleta();
-</script>
+    function dibujar() {
+      const total = nombres.length;
+      const radio = canvas.width / 2;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < total; i++) {
+        const angulo = (Math.PI * 2) / total;
+        ctx.beginPath();
+        ctx.fillStyle = colores[i % colores.length];
+        ctx.moveTo(radio, radio);
+        ctx.arc(radio, radio, radio, anguloInicio + i * angulo, anguloInicio + (i + 1) * angulo);
+        ctx.fill();
+        ctx.save();
+        ctx.translate(radio, radio);
+        ctx.rotate(anguloInicio + (i + 0.5) * angulo);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 14px Poppins";
+        ctx.fillText(nombres[i], radio - 10, 5);
+        ctx.restore();
+      }
+    }
+
+    function girar() {
+      if (girando || nombres.length === 0) return;
+      girando = true;
+      resultadoDiv.textContent = "Girando...";
+      resultadoDiv.classList.remove("animado");
+      let velocidad = Math.random() * 0.3 + 0.3;
+      const freno = 0.005;
+      const animar = () => {
+        if (velocidad <= 0) {
+          girando = false;
+          const anguloFinal = (Math.PI * 2 - anguloInicio + Math.PI / 2) % (Math.PI * 2);
+          const elegido = Math.floor((anguloFinal / (Math.PI * 2)) * nombres.length) % nombres.length;
+          resultadoDiv.textContent = `🎉 Seleccionado: ${nombres[elegido]}`;
+          void resultadoDiv.offsetWidth; // fuerza reinicio de animación
+          resultadoDiv.classList.add("animado");
+          return;
+        }
+        anguloInicio += velocidad;
+        velocidad -= freno;
+        dibujar();
+        requestAnimationFrame(animar);
+      };
+      animar();
+    }
+
+    actualizarRuleta();
+  </script>
+
+</body>
+</html>
